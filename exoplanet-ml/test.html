@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v5.9.13, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/images/photo-1707056790070-fd87135034ed.jpeg" type="image/x-icon">
+    <meta name="description" content="">
+    
+    <!-- Combined CSS styles -->
+    <style>
+        
+        .drop-container {
+            position: relative;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px dashed #555;
+            color: #444;
+            cursor: pointer;
+            transition: background .2s ease-in-out, border .2s ease-in-out;
+            font-family: 'Inter Tight', sans-serif; /* Match the page font */
+        }
+
+        .drop-container:hover {
+            background: #eee;
+            border-color: #111;
+        }
+
+        .drop-container:hover .drop-title {
+            color: #222;
+        }
+
+        .drop-title {
+            color: #444;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            transition: color .2s ease-in-out;
+        }
+        button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue color */
+    color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* Remove underline from anchor tags */
+    margin-top: 20px; /* Add some space above the button */
+    margin-right: 10px; /* Add space between buttons */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}
+
+/* Style the links */
+a {
+    text-decoration: none; /* Remove underline */
+}
+    </style>
+
+    <title>File Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/web/assets/mobirise-icons2/mobirise2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap-grid.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap-reboot.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/dropdown/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/theme/css/style.css') }}">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap&display=swap"></noscript>
+    <link rel="preload" as="style" href="{{ url_for('static', filename='assets/mobirise/css/mbr-additional.css?v=nSj2EW') }}"><link rel="stylesheet" href="{{ url_for('static', filename='assets/mobirise/css/mbr-additional.css?v=nSj2EW') }}" type="text/css">
+</head>
+<body>
+
+  <section data-bs-version="5.1" class="menu menu2 cid-u3u4QCmWmp" once="menu" id="menu02-3">
+    <!-- Your navigation menu HTML -->
+  </section>
+
+  <section data-bs-version="5.1" class="footer2 cid-u3u4QCr078" once="footers" id="footer02-4">
+    <!-- Your footer HTML -->
+  </section>
+
+  <section data-bs-version="5.1" class="form1 cid-u3LdLDYNHe" id="form01-5">
+    <div class="container">
+      <div class="row content-wrapper justify-content-center">
+        <div class="col-lg-7 mbr-form">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <h5 class="mbr-section-title mbr-fonts-style mb-5 display-2">
+              <strong>Upload your data</strong>
+            </h5>
+          </div>
+
+          <div class="text-wrapper align-left">
+            <form id="prediction-form" method="POST" enctype="multipart/form-data">
+              {{ form.hidden_tag() }}
+              <!-- File upload field -->
+              <label for="files" class="drop-container" id="dropcontainer">
+                <span class="drop-title">Drop files here or click to select</span>
+                {{ form.files(class="form-control", id="files", multiple="multiple") }}
+              </label>
+              <br>
+              <!-- Kepler ID field -->
+              <div class="form-group">
+                <label for="kepler_id">Kepler ID:</label>
+                <input type="text" class="form-control" id="kepler_id" name="kepler_id" placeholder="Enter Kepler ID">
+              </div>
+              <br>
+              <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;align-content: center;display: flex;position: relative;height: 4rem;">
+    <a href="https://mobiri.se/" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a>
+    <p style="margin: 0;text-align: center;" class="display-7">&#8204;</p>
+    <a style="z-index:1" href="https://mobirise.com/builder/landing-page-software.html">Landing Page Software</a>
+  </section>
+    
+        
+<a href="/pg"><button type="button">Back</button></a>
+<a href="/form"><button type="button">Predict</button></a>
+<a href="/visualize"><button type="button">Visualize</button></a>
+
+  <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/ytplayer/index.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/dropdown/js/navbar-dropdown.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/theme/js/script.js') }}"></script>
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <!-- AJAX request script -->
+  <script>
+    $(document).ready(function() {
+        $('#prediction-form').submit(function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+            
+            var formData = $(this).serialize(); // Serialize the form data
+            
+            // Send AJAX request to Flask endpoint
+            $.ajax({
+                type: 'POST',
+                url: '/home',
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // No alert for success
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText); // Log error message
+                    // No alert for error
+                }
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>

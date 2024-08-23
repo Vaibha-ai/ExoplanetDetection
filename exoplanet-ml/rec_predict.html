@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recurring Patterns</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #555;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .label-section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="label-section">
+    <h1>Label Percentages</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Label</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in label_counts.iterrows() %}
+            <tr>
+                <td>{{ row['Label'] }}</td>
+                <td>{{ row['Percentage'] }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="button-section">
+    <a href="/rec_upload"><button>Back</button></a>
+</div>
+<div class="data-section">
+    <h1>Recurring Patterns</h1>
+    <table>
+        <thead>
+            <tr>
+                {% for column in df_time_with_labels.columns %}
+                <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in df_time_with_labels.iterrows() %}
+            <tr>
+                {% for column in df_time_with_labels.columns %}
+                <td>{{ row[column] }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Files</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .files {
+            flex: 1;
+        }
+        .visualization {
+            flex: 1;
+            margin-left: 20px;
+        }
+        .statistics {
+            flex: 1;
+            margin-left: 20px;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .back-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="files">
+            <h1>List of Files</h1>
+            <form id="fileForm" action="/visualize" method="post">
+                {% for file in files %}
+                    <input type="radio" name="file" value="{{ file }}" onclick="this.form.submit()">{{ file }}<br>
+                {% endfor %}
+            </form>
+        </div>
+        <div class="visualization">
+            {% if img_data %}
+            <h1>Visualization</h1>
+            <img src="data:image/png;base64,{{ img_data }}" alt="Light Curve Visualization">
+            {% endif %}
+        </div>
+        <div class="statistics">
+            {% if result %}
+            <h1>Statistics</h1>
+            <ul>
+                <li><strong>Mean Flux:</strong> {{ result['Mean Flux'] }}</li>
+                <li><strong>Median Flux:</strong> {{ result['Median Flux'] }}</li>
+                <li><strong>Standard Deviation:</strong> {{ result['Standard Deviation'] }}</li>
+                <li><strong>Minimum Flux:</strong> {{ result['Minimum Flux'] }}</li>
+                <li><strong>Maximum Flux:</strong> {{ result['Maximum Flux'] }}</li>
+                <li><strong>Range:</strong> {{ result['Range'] }}</li>
+                <li><strong>25th Percentile:</strong> {{ result['25th Percentile'] }}</li>
+                <li><strong>50th Percentile:</strong> {{ result['50th Percentile'] }}</li>
+                <li><strong>75th Percentile:</strong> {{ result['75th Percentile'] }}</li>
+                <li><strong>Skewness:</strong> {{ result['Skewness'] }}</li>
+                <li><strong>Kurtosis:</strong> {{ result['Kurtosis'] }}</li>
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+    <div class="button-container">
+        <a href="/" class="back-button">Back to Home</a>
+    </div>
+</body>
+</html>

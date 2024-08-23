@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v5.9.13, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/images/photo-1707056790070-fd87135034ed.jpeg" type="image/x-icon">
+    <meta name="description" content="">
+    
+    <!-- Combined CSS styles -->
+    <style>
+        .form-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            font-family: 'Inter Tight', sans-serif;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Darker grey color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* Remove underline from anchor tags */
+    margin-top: 20px; /* Add some space above the button */
+}
+
+.btn:hover {
+    background-color: #495057; /* Darker grey color on hover */
+}
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #prediction-result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff; /* Change the color of the result */
+        }
+    </style>
+
+    <title>Predictions</title>
+</head>
+<body>
+    <div class="form-wrapper">
+        <h1>Predictions</h1>
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="model_type">Model Type:</label>
+                <select id="model_type" name="model_type">
+                    <option value="astronet/model">Pretrained Model</option>
+                    <option value="astronet/model_modified">Newly Trained Model</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="kepler_data_dir">Kepler Data Directory:</label>
+                <input type="text" id="kepler_data_dir" name="kepler_data_dir">
+            </div>
+            
+            <div class="form-group">
+                <label for="kepler_id">Kepler ID:</label>
+                <input type="number" id="kepler_id" name="kepler_id">
+            </div>
+            
+            <div class="form-group">
+                <label for="period">Period (days):</label>
+                <input type="number" id="period" name="period" step="any">
+            </div>
+            
+            <div class="form-group">
+                <label for="t0">Epoch (T0):</label>
+                <input type="number" id="t0" name="t0" step="any">
+            </div>
+            
+            <div class="form-group">
+                <label for="duration">Duration (days):</label>
+                <input type="number" id="duration" name="duration" step="any">
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+        <a href="/home" class="btn btn-primary">Back</a>
+        <div id="prediction-result"></div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#prediction-form').submit(function(event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+                
+                var formData = $(this).serialize(); // Serialize the form data
+                
+                // Send AJAX request to Flask endpoint
+                $.ajax({
+                    type: 'GET',
+                    url: '/predict',
+                    data: formData,
+                    success: function(response) {
+                        $('#prediction-result').html("Result = " + response); // Update the prediction result div
+                    },
+                    error: function(xhr, status, error) {
+                        $('#prediction-result').text('Error: ' + xhr.responseText); // Display error message
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

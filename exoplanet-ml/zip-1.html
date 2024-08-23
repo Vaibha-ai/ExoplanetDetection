@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Training</title>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=2RJKAI56OesD28-l_c3M7dmRx8WYCW-C0VUtZCb72qaqs8hKJISic56UYn2FXhzOVytHDPoUEiBPsIVIRI8vWEftIkqnJq6vkcfRkg_oBe83mij3Z-Nj7ovQrBr6zXZXoIaFX2DXczN5btWvjPEevWgkdgMg2cBmyx0uN5Xo6Tr7hp0f7ZP0JIndSvkbpoNhhuMRhOEs5SSvyCEWx_STzcoUvYFWKNKQX4JjqxqDIKA9Rz5U9bmflw8fDqC6z3Uj1coPjY_XShbswwpUZv214xkve1Frnhvsg0k1NZn0Q5YosvADgEbCBOgu9EcFhDqlSsKjw_QKILcfIHmij8n9odY_I4AL4aw_UjsDVrxAHeclehW4PdwxD-8Enaais_wHmKGiqX3tA1idukr0i9VLmp0UgZtNpbkCicG6t4noLSMGquwtvxOUPawM6P_mZElfg7icgEzWpFO3_sAO6hO8G9mJQQpijJW8V0ErfSaPh8mZsBV3lljjWY-tnQLVQIRntHg-aaJ_D3YLqtqjH0rmsiMfxxq-XhGb6Y8rOJ51jUDnA7WyYcjymb95mE_Hz49TXhf_loDDLtKeEpZlWSVPik-nM6UoguVMhFCy76gLiBcefRxSCzXiAMrXgfjtxjnLeXy5MrEq8Yu8Iin2fez7_6ysNGPzGRDzbGBq0OEfBRRAEBxtBqXPafVSUclEbNMBbOW2J3Uh0TbbHC5Y2UHlXKPQtzyMYGtwgj-jpOOZxirLwrC5uCsuUQnz7ZQUeA9KyFALG5SwYrzstWM4lDBI-s37o1tMSEH7kg7JwRSX3YjSFDKa8Uk9A49d5SEBngL-_MMbyYKllfnijaAjDGLwhkUThrOJKE9zjbKBvikUm4-EHeVF0oNgiP28hkwYnTrGcCEJ3-J-NYI5SUKmdTSvlftTC8gX18Mc9DiE4QRVKQ_2aQssA1DFn0YDh63BOsAAaNiNMxvMwDrsYkHNDEbIms_u1K65_4TlUdcs5nmAeo0e1hUzs-ISJJj3hN8lc22r0FkDN8y9NedcTHdQyDvJcPm4NbF30I0HUDI0BqIWui4znkrkJipIEWbysCo5DlAEWhqBBe4HUVxG3XxhnZ9F6giC_ULz4etfSP7ajFpBEhpqQqXje0XHuop1Z00L2r0QjVspTwNNjTOHbAmM0aqgY_56Sv7rYQWrIublFzV53NDppwgw7Cc1cP1KV1vYMG5Um1wsXMAGWLuWuTNY8hNl3G-kTjxdQr1nP3taqZh0WU8dau7hrXDzLv1_7KdRXW2s2BiMbq00XpgC3zQH7ADRvGSYvuDoLiIHbrkMuVNyXAqGzUHdXCjeBmdUlgEZXkSrP5uZtmKu2a0OsH8SPn3hpoqQSkeHvo5-PVvZIiGcJ4GUDuoYCDi-TRlr9SYl1BPk3GZ0nExpwGwyWBvHXthJHVo3jI0YL3XtBjMEF8MIeBgFWLJEhoQkIjtlEj6NGfuVmQ0cEg9ij7UL7ndOv7Vxph2TTMx9WVpTcJiM1BVzpeagD9b-j1xF7ZxTnXgrHMoWYai4eT4-9UoUR-Oz9N_VIWlKYx2pJhzCmjj1FqzWTltTvS13n2qOpiF3Qm46KkO5av8LpCznHb_cI5a1196XmP_UhOeYgxvYTtKIU0NoS3dCEk5i5BGBxyCBvFLgoNiY" nonce="324b3960476f3a542f30f9b05c636c40" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9tYWlsLWF0dGFjaG1lbnQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2F0dGFjaG1lbnQvdS8wLz91aT0yJmlrPWJhNzAxYjEyOWQmYXR0aWQ9MC4xJnBlcm1tc2dpZD1tc2ctZjoxNzk2MjMxOTkxNDAwNjIxMDc4JnRoPTE4ZWQ3ZjdhYjVhMDY0MTYmdmlldz1hdHQmZGlzcD1zYWZlJnJlYWxhdHRpZD1mX2x1eTgxaW9lMSZzYWRkYmF0PUFOR2pkSjlOaTVKTnVmakdVUF9nLWJMTXRmMGVkSHNITzV5MWVLUlEtZzFfTngtN1Q3T2hPbF9wOGNmVEliUkgzMkdueWprQVVHMnkxdXFRNUFfbnE2aGhZc2hMcm11RmptLS1udU1VcC0yM0RPZzczWXV5Wnl2ZVFIaXo1OVM3b3pCcVdTdWZjX0pIMjZEdGQzekpCYk9sNTNOYUktQmYtd2FZb3J6akcxX0d1YW4tbEU4Sk4wQnFhSjNFVGFlVkhuX09kWFF4eVlsYzFISXUyWTdpR0c2bDAwQUd5ZzlnVFItZUkzS3ZhMW5kajAyZW5CUWZxVEVFaHNneWxjUHBwM0JiaXJ0TlQ0dGRib3E2ckoweVY1UnpTdnJJZUNjSDIyMmxIZk9QM0FENUR5c2VBZVl3Z041ZmhBUW9zRF8zcGhhRk1kZTh3SDNMX3FnX281d1IyNVk2WnJPQ2VZMUZFZktzMXd3Z2lpYnNwRWh5X19MQ00ySjIyU19IbmV5V1l5c2Y5a3VzSE9wWm1kcnpqZFB0VmVwbmtmYkpCM1lLZ2owQ1JERWxmMUdVWXhsZ1N6dGpUYkc1THFpOEoxOWwyWGd3R0E1NmRyeUNta2t5M21HNkt4MlVOdVdMMlFjNUhBWER1dUUyY05wZ1ZoNmh4S1plUm9ZVThEQ3dNRllwS0M2T0hmaG0tVFVsbjdhc2Q0MjNPUnc4UlZVWFNCVnlKM3ZZQkFqcURVSGNlZjhVYkhZVXI5eVlxM3BTTE1QMzJvTjE4U0FRRTl2dUlPOWVpMDJLNkhQRDBnc2dad21BUFYyOEduNXpmUDdXS0lEb0RidURyZDJaLWMyY3ROcXdwTVNIZ3QyQ2hPQ1BGSE13V3FXTXQ5NTdBb3VoMW0yaXluY3BDbEhnM3FQXzBFNTFEekVVWHhWZnlDcWwxcURCd25WRlFfa3JCWU54NE1BZEVqY2RyTGxuRFFuMkctRTJMcl8yU25KUGwyY25SZzJEelJfZ1FtWFNvRkRGOWxzaW9pc1FCcWJmMUNGY0tyeGhxYzg5WkRSZTlsb3l1VThlZFZhUS01ZnRic1ZuQnBMcGg4X21uS0FSRjJHR1Y3MkJSX1Y5eUFtQXd2ajNsb193Umw5S3NaY0tpUmVpcEFaNTJlYThZZW5xenBUN1lfWTVsM25rNmlDaXBmQlRRWE12NGlfcHFJV19pNThwcTFWY0pZZ3NITk8tMU5OOUt5d3NrUGJGcjVYS1ZlUHYwd05aVzZza2s1UjlDbEQ3SXJITGltcDVqdlVPVkpsRllPQmtnNjdkR3NIS2VnZ1oxbnJucHNNYWI0azQ5VHA3MXlnTjYweUNweDh4VWYwYnF0VQ"/><style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        .title-strip {
+                background-color: #9ec3ea;
+    color: black;
+    padding: 10px 0;
+    font-size: 40px;
+    font-weight: bold;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 100px;
+    width: 100%;
+    box-sizing: border-box;
+            box-sizing: border-box; /* Ensure padding doesn't increase the width */
+            position: fixed; /* Position the strip */
+            top: 0; /* Align strip to the top */
+            left: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 30px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .upload-area {
+            border-radius: 10px;
+            border: 2px dashed #555;
+            color: #555;
+            cursor: pointer;
+            transition: background .2s ease-in-out, border .2s ease-in-out;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .upload-area:hover {
+            background: #ddd;
+            border-color: #333;
+        }
+
+        .upload-area input[type="file"] {
+            display: none;
+        }
+
+        .upload-title {
+            color: #555;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            transition: color .2s ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        .upload-btn {
+            background-color: #007bff; /* blue color */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .upload-btn:hover {
+            background-color: #0056b3; /* darker shade of blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-strip">MODEL TRAINING</div> <!-- Background color strip for the title -->
+        <h2>upload files</h2>
+        <div class="upload-area" id="upload-area">
+            <div class="upload-title">Upload your zipped training files here</div>
+            <input type="file" name="file" accept=".zip" multiple>
+        </div>
+        <button class="upload-btn">Upload</button>
+    </div>
+</body>
+</html>

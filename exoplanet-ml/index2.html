@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictions</title>
+</head>
+<body>
+    <h1>Predictions</h1>
+    <form id="prediction-form">
+        <label for="kepler_data_dir">Kepler Data Directory:</label><br>
+        <input type="text" id="kepler_data_dir" name="kepler_data_dir"><br>
+        
+        <label for="kepler_id">Kepler ID:</label><br>
+        <input type="number" id="kepler_id" name="kepler_id"><br>
+        
+        <label for="period">Period (days):</label><br>
+        <input type="number" id="period" name="period" step="any"><br>
+        
+        <label for="t0">Epoch (T0):</label><br>
+        <input type="number" id="t0" name="t0" step="any"><br>
+        
+        <label for="duration">Duration (days):</label><br>
+        <input type="number" id="duration" name="duration" step="any"><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+    
+    <div id="prediction-result"></div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#prediction-form').submit(function(event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+                
+                var formData = $(this).serialize(); // Serialize the form data
+                
+                // Send AJAX request to Flask endpoint
+                $.ajax({
+                    type: 'GET',
+                    url: '/predict',
+                    data: formData,
+                    success: function(response) {
+                        $('#prediction-result').html(response); // Update the prediction result div
+                    },
+                    error: function(xhr, status, error) {
+                        $('#prediction-result').text('Error: ' + xhr.responseText); // Display error message
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

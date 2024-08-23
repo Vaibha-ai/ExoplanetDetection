@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rec Measures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="submit"]:active {
+            transform: translateY(2px);
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        a.button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        a.button:hover {
+            background-color: #0056b3;
+        }
+
+        a.button:active {
+            transform: translateY(2px);
+        }
+
+        span {
+            margin: 0 10px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Kepler ID: {{ folder_name }}</h1>
+
+
+    <!-- Your Plotly plots here -->
+    {{ fig1|safe }}
+    {{ fig2|safe }}
+
+    <form method="post">
+        <input type="hidden" name="current_index" value="{{ current_index }}">
+        <input type="submit" name="action" value="Previous">
+        <input type="submit" name="action" value="Next">
+    </form>
+    
+        <div class="button-container">
+        <a href="{{ url_for('rec_upload') }}" class="button">Home</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            document.querySelector("form").addEventListener("submit", function(){
+                setTimeout(function(){
+                    console.log('Form submitted');
+                }, 100);
+            });
+        });
+    </script>
+
+</body>
+</html>
