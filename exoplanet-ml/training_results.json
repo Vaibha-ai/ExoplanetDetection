@@ -1,0 +1,1 @@
+{"accuracy": 0.7972973, "num_correct": 59.0, "auc": 0.8141243, "confusion_matrix": {"label_0_pred_0": 59.0, "label_0_pred_1": 0.0, "label_1_pred_0": 15.0, "label_1_pred_1": 0.0}, "global_step": 3, "loss": 0.5958993, "weighted_cross_entropy": 0.5958993, "num_examples": 74.0}

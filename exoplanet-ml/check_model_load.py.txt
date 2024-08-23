@@ -1,0 +1,16 @@
+import os
+import tensorflow as tf
+
+model_path = "F:/exoplanet_ml_master/exoplanet_ml/trained_model_tf1x"
+print("Checking if model path exists:", model_path)
+print("Model path exists:", os.path.exists(model_path))
+
+if os.path.exists(model_path):
+    print("Attempting to load model...")
+    try:
+        model = tf.keras.models.load_model(model_path)
+        print("Model loaded successfully.")
+    except Exception as e:
+        print("Error loading model:", e)
+else:
+    print("Model path is not accessible. Check permissions and path.")
